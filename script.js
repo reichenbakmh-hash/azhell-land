@@ -1,100 +1,114 @@
-// ===== SCRIPT CHAOTIQUE - Z3phyrLand =====
+// ===== SCRIPT MODERNE – Z3phyrLand (Tabnine-like) =====
 
 const chaosBtn = document.getElementById('chaos-btn');
 const counterDisplay = document.getElementById('counter-display');
-const submitBtn = document.getElementById('submit-btn');
 const form = document.getElementById('contact-form');
+const successDiv = document.getElementById('form-success');
 
 let clickCount = 0;
 
-// Liste de phrases aléatoires pour le bouton
+// Phrases pour le bouton chaos (toujours aussi absurdes)
 const buttonPhrases = [
-    "🔥 Encore !",
-    "💀 Aie mes yeux !",
-    "🌈 Trop stylé !",
-    "🤯 J'hallucine !",
-    "😱 Arrête !",
-    "🚀 On décolle !",
-    "🍕 Pizza time !",
-    "🦄 Licorne power !",
-    "💩 C'est du lourd",
-    "👽 Take me away"
+    "✨ Encore une !",
+    "🎨 Douceur visuelle",
+    "🌙 Mode nuit+",
+    "☀️ Mode jour-",
+    "🌀 On tourne",
+    "🌈 Pastel power",
+    "🖌️ Nouvelle teinte",
+    "🎭 Ambiance change"
 ];
 
-// Fonction couleur aléatoire (bien flashy)
-function getRandomColor() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+// Génère un dégradé doux aléatoire (couleurs pastel ou sombres)
+function getSoftGradient() {
+    const hue1 = Math.floor(Math.random() * 360);
+    const hue2 = (hue1 + 30 + Math.floor(Math.random() * 60)) % 360;
+    return `linear-gradient(135deg, hsl(${hue1}, 50%, 15%), hsl(${hue2}, 50%, 20%))`;
 }
 
-// Fonction pour changer le bordel
+// Génère une couleur d'accent (pour les titres, bordures)
+function getAccentColor() {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 70%, 60%)`;
+}
+
+// Fonction pour appliquer le chaos… mais en douceur
 function applyChaos() {
-    // Changer le fond
-    document.body.style.backgroundColor = getRandomColor();
+    // Fond avec dégradé doux
+    document.body.style.background = getSoftGradient();
     
-    // Changer la couleur du texte principal
-    document.body.style.color = getRandomColor();
+    // Couleur des titres (h1) + slogan
+    const accent = getAccentColor();
+    document.querySelector('h1').style.setProperty('background', `linear-gradient(135deg, ${accent}, #bc8cff)`);
+    document.querySelector('h1').style.webkitBackgroundClip = 'text';
+    document.querySelector('h1').style.webkitTextFillColor = 'transparent';
+    
+    // Bordures des cartes
+    const cards = document.querySelectorAll('section > *:not(h1)');
+    cards.forEach(card => {
+        card.style.borderColor = accent;
+    });
 
     // Changer le texte du bouton
     const randomIndex = Math.floor(Math.random() * buttonPhrases.length);
     chaosBtn.textContent = buttonPhrases[randomIndex];
 
-    // Changer la couleur du bouton
-    chaosBtn.style.backgroundColor = getRandomColor();
-    chaosBtn.style.borderColor = getRandomColor();
+    // Changer couleur du bouton chaos
+    chaosBtn.style.background = accent;
+    chaosBtn.style.boxShadow = `0 4px 20px ${accent}66`;
 
-    // Incrémenter le compteur
+    // Incrémenter compteur
     clickCount++;
     counterDisplay.textContent = `👆 Clics : ${clickCount}`;
 
-    // Bonus : changer le texte du footer au hasard
+    // Footer (petite blague)
     const footerP = document.querySelector('footer p');
     const footers = [
-        "© 2026 Z3phyrLand — Mon chat a codé ceci.",
-        "© 2026 Z3phyrLand — Si tu lis ça, t'as trop de temps libre.",
-        "© 2026 Z3phyrLand — Je suis payé en likes.",
-        "© 2026 Z3phyrLand — Ce site est certifié BS.",
-        "© 2026 Z3phyrLand — Je code mieux que je dors (faux)."
+        "© 2026 Z3phyrLand — Design doux, esprit fou.",
+        "© 2026 Z3phyrLand — Parce que le chaos peut être élégant.",
+        "© 2026 Z3phyrLand — Un site, mille couleurs.",
+        "© 2026 Z3phyrLand — La sieste, toujours.",
+        "© 2026 Z3phyrLand — Codé avec amour et café."
     ];
     footerP.textContent = footers[Math.floor(Math.random() * footers.length)];
 }
 
-// Écouteur du bouton chaos
 chaosBtn.addEventListener('click', applyChaos);
 
-// Gestion du formulaire
-submitBtn.addEventListener('click', (e) => {
+// ===== FORMULAIRE AVEC FORMSPREE =====
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-    if (!nom || !email || !message) {
-        alert("😡 Hé ho ! T'as oublié un champ ! Même mon chat sait remplir un formulaire.");
+    if (!data.nom || !data.email || !data.message) {
+        alert("😅 Hé, il manque un champ ! Remplis tout, s'il te plaît.");
         return;
     }
 
-    // Réponse absolument pas professionnelle
-    const reponses = [
-        `Merci ${nom} ! Ton message "${message}" a été envoyé dans l'espace. (En vrai, il est dans ma boîte spam, je checkerai dans 3 mois).`,
-        `Bravo ${nom} ! Tu as réussi à m'envoyer un message. Récompense : une image de chat dans ta tête.`,
-        `${nom}, j'ai bien reçu ton mail. Je vais l'imprimer, le manger, et te répondre par télépathie.`,
-        `Message de ${nom} reçu ! Je le garde précieusement dans mon dossier "trucs à lire quand je m'ennuie".`
-    ];
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+        });
 
-    const reponseAleatoire = reponses[Math.floor(Math.random() * reponses.length)];
-    alert(`📨 ${reponseAleatoire}`);
-    
-    // Reset du formulaire
-    form.reset();
+        if (response.ok) {
+            form.style.display = 'none';
+            successDiv.style.display = 'block';
+            // petit effet visuel
+            document.body.style.background = 'linear-gradient(135deg, #0d1117, #1a2a1a)';
+        } else {
+            alert("🙈 Le message n'est pas parti. Réessaie ou envoie un pigeon voyageur.");
+        }
+    } catch {
+        alert("💤 Le serveur fait la sieste. Réessaie dans 2 minutes.");
+    }
 });
 
-// Petit chaos au chargement de la page (pour l'accueil)
+// Au chargement : fond initial avec dégradé doux
 window.addEventListener('load', () => {
-    document.body.style.backgroundColor = getRandomColor();
-    chaosBtn.style.backgroundColor = getRandomColor();
-    chaosBtn.textContent = "🎢 C'est parti !";
+    document.body.style.background = 'linear-gradient(135deg, #0d1117, #161b22)';
+    chaosBtn.style.background = '#238636';
 });
