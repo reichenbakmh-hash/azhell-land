@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Z3phyrLand — Le chaos total</title>
-    
+    <title>AzhellLand </title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,85 +11,91 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#accueil">🚀 Accueil</a></li>
-                <li><a href="#apropos">🤡 À propos</a></li>
-                <li><a href="#contact">📩 Contact</a></li>
+                <li><a href="#accueil">🏠 Accueil</a></li>
+                <li><a href="#apropos">🧠 À propos</a></li>
+                <li><a href="#contact">✉️ Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="accueil">
         <h1>🏰 AzhellLand</h1>
-        <p class="slogan">"L'endroit le plus inutile du web (et c'est moi qui le dis)"</p>
-        
-        
-        <img src="https://cataas.com/cat?type=square&t=123456" 
-             alt="Un chat random car c'est drôle" 
-             class="cat-img" 
-             width="400" height="400" />
-
-        <p>
-            Bienvenue dans mon cerveau en vrac ! 🧠 <br>
-            Ici, on ne fait RIEN de sérieux. On parle de <strong>pigeons espions</strong>, 
-            de mes <strong>chaussettes </strong> et de mes compétences en code 
-            qui font planter mon propre ordinateur.
-        </p>
-      
-        <button class="btn-chaos" id="chaos-btn">🔥 Tente ta chance (ou pas)</button>
-        <div class="click-counter" id="counter-display">👆 Clics : 0</div>
+        <p class="slogan">"L'endroit le plus inutile du web… mais stylé."</p>
+        <div>
+            <img src="https://cataas.com/cat?type=square&t=123456" 
+                 alt="Un chat aléatoire, parce que." 
+                 class="cat-img" 
+                 width="400" height="400" />
+            <p>
+                Bienvenue dans mon cerveau en vrac ! 🧠 <br />
+                Ici, on ne fait RIEN de sérieux. On parle de <strong>pigeons espions</strong>, 
+                de mes <strong>chaussettes </strong> et de mes compétences en code 
+                qui font planter mon propre ordinateur.
+            </p>
+            <button class="btn-chaos" id="chaos-btn">🎨 Changer l'ambiance</button>
+            <div class="click-counter" id="counter-display">👆 Clics : 0</div>
+        </div>
     </section>
 
     <section id="apropos">
         <h1>🤪 Qui suis-je ?</h1>
-        <p>
-            Moi, c’est <strong>Dooffy</strong>. Développeur le weekend, 
-            champion du monde de sieste en semaine et un crac de la finance à mes heures perdues. <br>
-            J’ai créé ce site pour prouver à mes potes dont je n'ai pas que je savais faire du HTML. 
-            <strong>Spoiler :</strong> je sais toujours pas, mais le site existe donc 
-            c’est gagné. 🏆 <br><br>
-            Mes passions : "acheter" des jeux Steam que je ne lance jamais, 
-            regarder des tutos JS sans rien comprendre, et nourrir mon chat qui n'est vraisemblablement pas le mien.
-            (celui de la photo).
-        </p>
+        <div>
+            <p>
+                Moi, c’est <strong>Dooffy ou Azhell</strong> (ou qui tu veux). Développeur le weekend, 
+                champion du monde du je suis occupé à rien faire en semaine et un crac de la finance à mes heures perdues. <br />
+                J’ai créé ce site pour prouver à mes potes que je savais faire du HTML. 
+                <strong>Spoiler :</strong> oui c'est le cas. La preuve ! le site existe donc 
+                c’est gagné. 🏆 <br /><br />
+                Mes passions : "acheter"(mouhahaha) des jeux Steam que je ne lance jamais, 
+                regarder des tutos JS sans rien comprendre, et nourrir mon chat imaginaire 
+                (celui de la photo).
+            </p>
+        </div>
     </section>
 
     <section id="contact">
         <h1>📨 Balance ton message</h1>
-        <p>
-            Envoie-moi un mot doux, une insulte créative, ou ta recette de pâtes. 
-            Je te répondrai peut-être entre deux parties de <strong>League of Legends</strong> 
-            (si je suis pas en train de pleurer sur mon rank).
-        </p>
+        <div>
+            <p>
+                Envoie-moi un mot doux, une insulte créative, ou ta recette de pâtes. 
+                Je te répondrai peut-être entre deux parties de <strong>League of Legends</strong> 
+                (si je suis pas en train de pleurer sur mon rank).
+            </p>
 
-        <form id="contact-form">
-            <div class="form-group">
-                <label for="nom">👉 Ton nom (ou pseudo qui tue)</label>
-                <input type="text" id="nom" placeholder="Ex: SuperZ3phyrFan" required />
+            <!-- Formulaire avec Formspree (remplace TON-ID) -->
+            <form id="contact-form" 
+                  action="https://formspree.io/f/mrpzqogb" 
+                  method="POST">
+                <div class="form-group">
+                    <label for="nom">👉 Ton nom (ou pseudo qui tue)</label>
+                    <input type="text" id="nom" name="nom" placeholder="Ex: SuperZ3phyrFan" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">📧 Ton mail (pour que je te réponde. Mais non je plaisante.)</label>
+                    <input type="email" id="email" name="email" placeholder="moi@jaipeur.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="message">💬 Ton message (mets un truc marrant)</label>
+                    <textarea id="message" name="message" placeholder="J'adore ton site, il est tellement bien qu'il en devient nul !"></textarea>
+                </div>
+                <button type="submit" id="submit-btn">🚀 Envoyer pour de vrai</button>
+            </form>
+
+            <!-- Message de succès -->
+            <div id="form-success">
+                <p>✅ Message bien reçu ! Je te réponds dès que j'ai fini ma sieste. 😴</p>
             </div>
-            <div class="form-group">
-                <label for="email">📧 Ton mail (promis, pas de spam... enfin peut-être/ en tout cas je ne te promets rien.)</label>
-                <input type="email" id="email" placeholder="moi@jaipeur.com" required />
-            </div>
-            <div class="form-group">
-                <label for="message">💬 Ton message (mets un truc marrant stp)</label>
-                <textarea id="message" placeholder="J'adore ton site, il est tellement nul qu'il en devient génial !"></textarea>
-            </div>
-            <button type="submit" class="btn-chaos" id="submit-btn" style="background:#33bb77; border-color:#88ffaa;">
-                🚀 Envoyer dans le vide
-            </button>
-        </form>
+        </div>
     </section>
 
     <footer>
-        <p>© 1984 - Nineteen Eighty-Four- AzhellLand — Le site qui n'a aucune raison d'exister, mais qui existe quand même. Au moins, lis Orwell.</p>
+        <p>© 1984 - Nineteen Eighty-Four — on capte facilement ton attention toi, Big Brother en serait fier..</p>
         <ul>
-            <!-- Tes liens perso conservés -->
-            <li><a href="https://www.instagram.com/z3phyr_ellion" target="_blank" rel="noopener noreferrer">📸 Instagram (je ne poste rien je regarde tes photos, à condition qu'il y a des chats)</a></li>
-            <li><a href="https://discord.gg/hkk8ECna" target="_blank" rel="noopener noreferrer">🎮 Discord (viens perdre ton temps, je sais que tu n'as rien de mieux à faire.)</a></li>
+            <li><a href="https://www.instagram.com/z3phyr_ellion" target="_blank" rel="noopener noreferrer">📸 Instagram</a></li>
+            <li><a href="https://discord.gg/hkk8ECna" target="_blank" rel="noopener noreferrer">🎮 Discord</a></li>
         </ul>
     </footer>
 
-    <!-- Lien vers le fichier JS externe -->
     <script src="script.js"></script>
 </body>
 </html>
