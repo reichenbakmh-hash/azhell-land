@@ -64,11 +64,11 @@ function applyChaos() {
     // Footer (petite blague)
     const footerP = document.querySelector('footer p');
     const footers = [
-        "© 2026 Z3phyrLand — Design doux, esprit fou.",
-        "© 2026 Z3phyrLand — Parce que le chaos peut être élégant.",
-        "© 2026 Z3phyrLand — Un site, mille couleurs.",
-        "© 2026 Z3phyrLand — La sieste, toujours.",
-        "© 2026 Z3phyrLand — Codé avec amour et café."
+        "© AzhellLand — trop facile.",
+        "© AzhellLand - j'arrête, j'arrête.",
+        "© AzhellLand — Un site, mille couleurs.",
+        "© AzhellLand — Imagine le meilleur message ici.",
+        "© AzhellLand — T'inquiète, je m'ennuie aussi."
     ];
     footerP.textContent = footers[Math.floor(Math.random() * footers.length)];
 }
