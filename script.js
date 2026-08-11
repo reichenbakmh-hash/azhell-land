@@ -1,4 +1,4 @@
-// ===== SCRIPT MODERNE – Z3phyrLand (Tabnine-like) =====
+// ===== SCRIPT CHAOTIQUE – AzhellLand =====
 
 const chaosBtn = document.getElementById('chaos-btn');
 const counterDisplay = document.getElementById('counter-display');
@@ -7,68 +7,68 @@ const successDiv = document.getElementById('form-success');
 
 let clickCount = 0;
 
-// Phrases pour le bouton chaos (toujours aussi absurdes)
+// Phrases délirantes pour le bouton
 const buttonPhrases = [
-    "✨ Encore une !",
-    "🎨 Douceur visuelle",
-    "🌙 Mode nuit+",
-    "☀️ Mode jour-",
-    "🌀 On tourne",
-    "🌈 Pastel power",
-    "🖌️ Nouvelle teinte",
-    "🎭 Ambiance change"
+    "🔥 ENCORE !",
+    "💀 AÏE MES YEUX !",
+    "🌈 TROP STYLÉ !",
+    "🤯 J'HALLUCINE !",
+    "😱 ARRÊTE !",
+    "🚀 ON DÉCOLLE !",
+    "🍕 PIZZA TIME !",
+    "🦄 LICORNE POWER !",
+    "👽 Take me away",
+    "🌋 BOOM !"
 ];
 
-// Génère un dégradé doux aléatoire (couleurs pastel ou sombres)
-function getSoftGradient() {
-    const hue1 = Math.floor(Math.random() * 360);
-    const hue2 = (hue1 + 30 + Math.floor(Math.random() * 60)) % 360;
-    return `linear-gradient(135deg, hsl(${hue1}, 50%, 15%), hsl(${hue2}, 50%, 20%))`;
+// Génère une couleur bien flashy
+function getCrazyColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
-// Génère une couleur d'accent (pour les titres, bordures)
-function getAccentColor() {
-    const hue = Math.floor(Math.random() * 360);
-    return `hsl(${hue}, 70%, 60%)`;
-}
-
-// Fonction pour appliquer le chaos… mais en douceur
+// Applique le chaos visuel (mais garde le texte lisible)
 function applyChaos() {
-    // Fond avec dégradé doux
-    document.body.style.background = getSoftGradient();
+    // Fond flashy
+    document.body.style.backgroundColor = getCrazyColor();
     
-    // Couleur des titres (h1) + slogan
-    const accent = getAccentColor();
-    document.querySelector('h1').style.setProperty('background', `linear-gradient(135deg, ${accent}, #bc8cff)`);
+    // Couleur des titres (dégradé arc-en-ciel)
+    const hue1 = Math.floor(Math.random() * 360);
+    const hue2 = (hue1 + 60) % 360;
+    document.querySelector('h1').style.background = `linear-gradient(45deg, hsl(${hue1}, 80%, 60%), hsl(${hue2}, 80%, 60%))`;
     document.querySelector('h1').style.webkitBackgroundClip = 'text';
     document.querySelector('h1').style.webkitTextFillColor = 'transparent';
     
-    // Bordures des cartes
+    // Bordure des cartes
     const cards = document.querySelectorAll('section > *:not(h1)');
     cards.forEach(card => {
-        card.style.borderColor = accent;
+        card.style.borderColor = getCrazyColor();
+        card.style.boxShadow = `0 0 40px ${getCrazyColor()}66`;
     });
 
-    // Changer le texte du bouton
+    // Texte du bouton
     const randomIndex = Math.floor(Math.random() * buttonPhrases.length);
     chaosBtn.textContent = buttonPhrases[randomIndex];
 
-    // Changer couleur du bouton chaos
-    chaosBtn.style.background = accent;
-    chaosBtn.style.boxShadow = `0 4px 20px ${accent}66`;
+    // Couleur du bouton
+    chaosBtn.style.background = getCrazyColor();
+    chaosBtn.style.borderColor = getCrazyColor();
+    chaosBtn.style.boxShadow = `0 0 60px ${getCrazyColor()}77`;
 
-    // Incrémenter compteur
+    // Compteur
     clickCount++;
     counterDisplay.textContent = `👆 Clics : ${clickCount}`;
 
-    // Footer (petite blague)
+    // Footer : phrases moins IA, plus perso
     const footerP = document.querySelector('footer p');
     const footers = [
-        "© AzhellLand — trop facile.",
-        "© AzhellLand - j'arrête, j'arrête.",
-        "© AzhellLand — Un site, mille couleurs.",
-        "© AzhellLand — Imagine le meilleur message ici.",
-        "© AzhellLand — T'inquiète, je m'ennuie aussi."
+        "© 2026 AzhellLand — Bisous.",
+        "© 2026 AzhellLand — Site créé entre deux placements boursiers.",
+        "© 2026 AzhellLand — Mon meilleur investissement ? Ce site.",
+        "© 2026 AzhellLand — Publication sous supervision de mon psy.",
+        "© 2026 AzhellLand — Certifié par l'hôpital psychiatrique."
     ];
     footerP.textContent = footers[Math.floor(Math.random() * footers.length)];
 }
@@ -83,7 +83,7 @@ form.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(formData.entries());
 
     if (!data.nom || !data.email || !data.message) {
-        alert("😅 Hé, il manque un champ ! Remplis tout, s'il te plaît.");
+        alert("😡 Hé ho ! T'as oublié un champ ! Même mon chat sait remplir un formulaire.");
         return;
     }
 
@@ -97,18 +97,20 @@ form.addEventListener('submit', async (e) => {
         if (response.ok) {
             form.style.display = 'none';
             successDiv.style.display = 'block';
-            // petit effet visuel
-            document.body.style.background = 'linear-gradient(135deg, #0d1117, #1a2a1a)';
+            // Célébration colorée
+            document.body.style.backgroundColor = getCrazyColor();
+            chaosBtn.style.background = getCrazyColor();
         } else {
-            alert("🙈 Le message n'est pas parti. Réessaie ou envoie un pigeon voyageur.");
+            alert("😱 Oups ! Le message n'est pas parti. Réessaie ou envoie un pigeon voyageur.");
         }
     } catch {
         alert("💤 Le serveur fait la sieste. Réessaie dans 2 minutes.");
     }
 });
 
-// Au chargement : fond initial avec dégradé doux
+// Chaos au chargement
 window.addEventListener('load', () => {
-    document.body.style.background = 'linear-gradient(135deg, #0d1117, #161b22)';
-    chaosBtn.style.background = '#238636';
+    document.body.style.backgroundColor = getCrazyColor();
+    chaosBtn.style.background = getCrazyColor();
+    chaosBtn.textContent = "🎢 C'EST PARTI !";
 });
